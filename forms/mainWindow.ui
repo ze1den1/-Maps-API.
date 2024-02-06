@@ -38,7 +38,7 @@
    <widget class="QLabel" name="image">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>100</x>
       <y>10</y>
       <width>600</width>
       <height>450</height>
@@ -63,6 +63,90 @@
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Слои</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioSchema">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>81</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Схема</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">layerGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QRadioButton" name="radioSatellite">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>81</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Спутник</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">layerGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QRadioButton" name="radioHybrid">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>81</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Гибрид</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">layerGroup</string>
+    </attribute>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -78,4 +162,7 @@
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="layerGroup"/>
+ </buttongroups>
 </ui>

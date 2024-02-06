@@ -5,7 +5,7 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap, QKeyEvent
 from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox
 
-from mapImage import MapImage
+from mapImage import MapImage, MapType
 
 SCREEN_SIZE = (600, 450)
 
@@ -16,8 +16,21 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('forms/mainWindow.ui', self)
+
         self._map = MapImage()
         self.updateImage()
+        self.layerGroup.buttonClicked.connect(self.select_layer)
+
+    def select_layer(self):
+        match self.layerGroup.checkedButton():
+            case self.radioSchema:
+                self._map.set_type(MapType.SCHEMA)
+            case self.radioSatellite:
+                self._map.set_type(MapType.SATELLITE)
+            case self.radioHybrid:
+                self._map.set_type(MapType.HYBRID)
+        self.updateImage()
+        self.focusWidget().clearFocus()
 
     def updateImage(self):
         pixmap = QPixmap()
@@ -27,7 +40,7 @@ class MainWindow(QMainWindow):
             QMessageBox(QMessageBox.Icon.Warning, 'WARNING!', 'Не удалось загрузить карту',
                         QMessageBox.StandardButton.NoButton, self).show()
         else:
-            pixmap.loadFromData(image, format='PNG')
+            pixmap.loadFromData(image)
         self.image.setPixmap(pixmap)
 
     def keyPressEvent(self, event: QKeyEvent) -> None:
